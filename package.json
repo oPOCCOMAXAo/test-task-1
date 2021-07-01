@@ -1,0 +1,30 @@
+{
+  "name": "test-task",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "npm src/index.js",
+    "prefill": "node src/prefill.js",
+    "test": "jest"
+  },
+  "dependencies": {
+    "koa": "^2.13.1",
+    "koa-bodyparser": "^4.3.0",
+    "koa-router": "^10.0.0",
+    "mongoose": "^5.13.0"
+  },
+  "devDependencies": {
+    "@types/koa": "^2.13.3",
+    "@types/koa-router": "^7.4.2",
+    "axios": "^0.21.1",
+    "eslint": "^7.29.0",
+    "jest": "^27.0.6",
+    "prettier": "^2.3.2"
+  },
+  "jest": {
+    "rootDir": "tests",
+    "testMatch": [
+      "**/__tests__/**/*.[jt]s?(x)",
+      "**/?(*.)+(spec|test).[jt]s?(x)"
+    ]
+  }
+}
