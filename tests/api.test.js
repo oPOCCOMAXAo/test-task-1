@@ -5,6 +5,10 @@ const qs = require("querystring");
 const axios = require("axios");
 const { connection, Reserved } = require("../src/db");
 
+// replace current time for service testing purposes
+let currentTime = new Date(2021, 6, 1, 0).getTime();
+Date.now = jest.fn(() => currentTime);
+
 let server;
 let port;
 

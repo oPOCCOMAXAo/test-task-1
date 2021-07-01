@@ -6,31 +6,16 @@ const doctors = [
     _id: "0000",
     name: "Иванов И",
     spec: "Терапевт",
-    slots: [
-      new Date(2021, 6, 1, 10),
-      new Date(2021, 6, 1, 12),
-      new Date(2021, 6, 1, 14),
-    ],
   },
   {
     _id: "0001",
     name: "Петров П",
     spec: "Гигапевт",
-    slots: [
-      new Date(2021, 6, 1, 10),
-      new Date(2021, 6, 1, 12),
-      new Date(2021, 6, 1, 14),
-    ],
   },
   {
     _id: "0002",
     name: "Сидоров С",
     spec: "Мегапевт",
-    slots: [
-      new Date(2021, 6, 1, 10),
-      new Date(2021, 6, 1, 12),
-      new Date(2021, 6, 1, 14),
-    ],
   },
 ];
 
@@ -68,6 +53,18 @@ async function init() {
       console.error(e);
     }
   }
+
+  const slots = [];
+  for (let day = 1; day < 30; day++) {
+    for (let hour = 8; hour < 17; hour += 2) {
+      slots.push(new Date(2021, 6, day, hour));
+    }
+  }
+
+  await Doctor.updateMany(
+    { _id: { $in: doctors.map((d) => d._id) } },
+    { slots }
+  );
 
   await connection.close();
 }
